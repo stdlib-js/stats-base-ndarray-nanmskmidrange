@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,21 +16,14 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var strided = require( '@stdlib/stats-strided-nanmskmidrange' ).ndarray;
-
-
-// MAIN //
+import { typedndarray } from '@stdlib/types/ndarray';
 
 /**
-* Computes the mid-range of a one-dimensional ndarray according to a mask, ignoring `NaN` values.
+* Calculates the mid-range of a one-dimensional ndarray according to a mask, ignoring `NaN` values.
 *
 * ## Notes
 *
@@ -39,8 +32,8 @@ var strided = require( '@stdlib/stats-strided-nanmskmidrange' ).ndarray;
 *     -   a one-dimensional input ndarray.
 *     -   a one-dimensional mask ndarray.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {number} mid-range
+* @param arrays - array-like object containing ndarrays
+* @returns mid-range
 *
 * @example
 * var vector = require( '@stdlib/ndarray-vector-ctor' );
@@ -51,13 +44,9 @@ var strided = require( '@stdlib/stats-strided-nanmskmidrange' ).ndarray;
 * var v = nanmskmidrange( [ x, mask ] );
 * // returns 0.0
 */
-function nanmskmidrange( arrays ) {
-	var mask = arrays[ 1 ];
-	var x = arrays[ 0 ];
-	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ), getData( mask ), getStride( mask, 0 ), getOffset( mask ) ); // eslint-disable-line max-len
-}
+declare function nanmskmidrange( arrays: [ typedndarray<number>, typedndarray<number> ] ): number;
 
 
 // EXPORTS //
 
-module.exports = nanmskmidrange;
+export = nanmskmidrange;
